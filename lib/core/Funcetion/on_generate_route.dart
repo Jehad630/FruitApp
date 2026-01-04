@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruithub/features/View/presentaion/view/splash_view.dart';
+import 'package:fruithub/features/Splash/presentaion/view/splash_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
