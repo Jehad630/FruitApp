@@ -23,7 +23,7 @@ class _SplashViewVodyState extends State<SplashViewVody> {
       mainAxisAlignment: .spaceBetween,
       children: [
         Row(
-          mainAxisAlignment: .start,
+          mainAxisAlignment: .end,
           children: [SvgPicture.asset(Assets.assetsImagesPlant)],
         ),
         SvgPicture.asset(Assets.assetsImagesLogo),
