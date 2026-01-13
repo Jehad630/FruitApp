@@ -3,11 +3,13 @@ import 'package:fruithub/core/utils/app_images.dart';
 import 'package:fruithub/features/On_Boarding/presentaion/view/widget/page_view_item.dart';
 
 class on_boarding_PageView extends StatelessWidget {
-  const on_boarding_PageView({super.key});
+  const on_boarding_PageView({super.key, required this.pageController});
+  final PageController pageController;
 
   @override
   Widget build(BuildContext context) {
     return PageView(
+      controller: pageController,
       children: [
         PageViewItem(
           image: Assets.assetsImagesPageViewItem1Image,
@@ -18,6 +20,9 @@ class on_boarding_PageView extends StatelessWidget {
             mainAxisAlignment: .center,
             children: [Text("مرحبًا بك في "), Text("Fruit"), Text("HUB")],
           ),
+          isvisible:
+              (pageController.hasClients ? pageController.page!.round() : 0) !=
+              0,
         ),
         PageViewItem(
           image: Assets.assetsImagesPageViewItem2Image,
@@ -42,6 +47,8 @@ class on_boarding_PageView extends StatelessWidget {
               ),
             ],
           ),
+          isvisible: (pageController.hasClients ? pageController.page!.round() : 1) !=
+              1,
         ),
       ],
     );

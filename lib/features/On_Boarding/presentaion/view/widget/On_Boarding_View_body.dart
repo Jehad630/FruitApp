@@ -21,6 +21,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
     pageController = PageController();
     pageController.addListener(() {
       currentIndex = pageController.page!.round();
+      setState(() {});
     });
     super.initState();
   }
@@ -35,18 +36,26 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(child: on_boarding_PageView()),
+        Expanded(child: on_boarding_PageView(pageController: pageController)),
         DotsIndicator(
           dotsCount: 2,
           decorator: DotsDecorator(
             activeColor: AppColors.lightPrimaryColor,
-            color: AppColors.lightPrimaryColor.withOpacity(.5),
+            color: currentIndex == 1
+                ? AppColors.primaryColor
+                : AppColors.primaryColor.withOpacity(.5),
           ),
         ),
         SizedBox(height: 30),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: khorizontalPadding),
-          child: CustomButton(onPressed: () {}, text: "ابدأ الان"),
+        Visibility(
+          visible: currentIndex == 1 ? true : false,
+          maintainAnimation: true,
+          maintainSize: true,
+          maintainState: true,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: khorizontalPadding),
+            child: CustomButton(onPressed: () {}, text: "ابدأ الان"),
+          ),
         ),
         SizedBox(height: 43),
       ],
