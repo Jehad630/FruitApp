@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fruithub/core/constants/constants.dart';
+import 'package:fruithub/core/services/shared_prefrences_singleton.dart';
 import 'package:fruithub/core/utils/app_images.dart';
+import 'package:fruithub/features/Auth/presentaion/view/widget/login_view.dart';
 import 'package:fruithub/features/On_Boarding/presentaion/view/on_boarding_view.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -34,8 +37,13 @@ class _SplashViewVodyState extends State<SplashViewVody> {
   }
 
   void excuteNavigation() {
+    bool isOnBoadringViewSeen = Prefs.getbool(KisOnBoadringViewSeen);
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+      if (isOnBoadringViewSeen) {
+        Navigator.pushReplacementNamed(context, LoginView.routeName);
+      } else {
+        Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+      }
     });
   }
 }
