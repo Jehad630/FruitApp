@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruithub/core/Widgets/Custom_AppBar.dart';
 import 'package:fruithub/features/Auth/presentaion/view/widget/login_view_body.dart';
 
 class LoginView extends StatelessWidget {
@@ -8,6 +9,9 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: LoginViewBody());
+    return Scaffold(
+      appBar: BuildAppbar(context, title: "تسجيل الدخول"),
+      body: LoginViewBody(),
+    );
   }
 }
