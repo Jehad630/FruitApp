@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fruithub/core/utils/App_colors.dart';
 import 'package:fruithub/core/utils/app_images.dart';
+import 'package:fruithub/core/utils/app_text_styles.dart';
 import 'package:fruithub/features/On_Boarding/presentaion/view/widget/page_view_item.dart';
 
 class on_boarding_PageView extends StatelessWidget {
@@ -18,7 +20,21 @@ class on_boarding_PageView extends StatelessWidget {
               "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.",
           title: Row(
             mainAxisAlignment: .center,
-            children: [Text("مرحبًا بك في "), Text("Fruit"), Text("HUB")],
+            children: [
+              Text("مرحبًا بك في ", style: TextStyles.bold23),
+              Text(
+                " HUB",
+                style: TextStyles.bold23.copyWith(
+                  color: AppColors.secondaryColor,
+                ),
+              ),
+              Text(
+                "Fruit",
+                style: TextStyles.bold23.copyWith(
+                  color: AppColors.primaryColor,
+                ),
+              ),
+            ],
           ),
           isvisible:
               (pageController.hasClients ? pageController.page!.round() : 0) !=
@@ -47,8 +63,9 @@ class on_boarding_PageView extends StatelessWidget {
               ),
             ],
           ),
-          isvisible: (pageController.hasClients ? pageController.page!.round() : 1) !=
-              1,
+          isvisible:
+              (pageController.hasClients ? pageController.page!.round() : 1) !=
+              0,
         ),
       ],
     );
