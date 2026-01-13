@@ -36,9 +36,7 @@ class on_boarding_PageView extends StatelessWidget {
               ),
             ],
           ),
-          isvisible:
-              (pageController.hasClients ? pageController.page!.round() : 0) !=
-              0,
+          isvisible: true,
         ),
         PageViewItem(
           image: Assets.assetsImagesPageViewItem2Image,
@@ -63,9 +61,7 @@ class on_boarding_PageView extends StatelessWidget {
               ),
             ],
           ),
-          isvisible:
-              (pageController.hasClients ? pageController.page!.round() : 1) !=
-              0,
+          isvisible: false,
         ),
       ],
     );
