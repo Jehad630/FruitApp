@@ -50,9 +50,15 @@ class LoginViewBody extends StatelessWidget {
             CustomButton(onPressed: () {}, text: "تسجيل الدخول"),
             const SizedBox(height: 42),
 
-            dontHaveAccountWidget(),
+            GestureDetector(
+              onTap: () {
+                // Navigate to sign up view
+                Navigator.pushNamed(context, 'signUp');
+              },
+              child: const dontHaveAccountWidget(),
+            ),
             const SizedBox(height: 47),
-            ro_divider(),
+            const ro_divider(),
             const SizedBox(height: 26),
             SocialLoginButton(
               title: "  تسجيل  بواسطة جوجل",
