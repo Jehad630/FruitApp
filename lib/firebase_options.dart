@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -40,47 +41,47 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCKLliFDFNtWv8XxbxkIIFaT2z4J2V1v0c',
-    appId: '1:718796753680:web:fb2e11bfee3f2bcefbf395',
-    messagingSenderId: '718796753680',
-    projectId: 'fruit-app-33df1',
-    authDomain: 'fruit-app-33df1.firebaseapp.com',
-    storageBucket: 'fruit-app-33df1.firebasestorage.app',
+  static FirebaseOptions get web => FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_WEB_API_KEY'] ?? 'AIzaSyCKLliFDFNtWv8XxbxkIIFaT2z4J2V1v0c',
+    appId: dotenv.env['FIREBASE_WEB_APP_ID'] ?? '1:718796753680:web:fb2e11bfee3f2bcefbf395',
+    messagingSenderId: dotenv.env['FIREBASE_WEB_MESSAGING_SENDER_ID'] ?? '718796753680',
+    projectId: dotenv.env['FIREBASE_WEB_PROJECT_ID'] ?? 'fruit-app-33df1',
+    authDomain: dotenv.env['FIREBASE_WEB_AUTH_DOMAIN'] ?? 'fruit-app-33df1.firebaseapp.com',
+    storageBucket: dotenv.env['FIREBASE_WEB_STORAGE_BUCKET'] ?? 'fruit-app-33df1.firebasestorage.app',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDz4zD3FZVibHQk_xV406MjQzQHhBoLtEo',
-    appId: '1:718796753680:android:022165c940dbbebefbf395',
-    messagingSenderId: '718796753680',
-    projectId: 'fruit-app-33df1',
-    storageBucket: 'fruit-app-33df1.firebasestorage.app',
+  static FirebaseOptions get android => FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_ANDROID_API_KEY'] ?? 'AIzaSyDz4zD3FZVibHQk_xV406MjQzQHhBoLtEo',
+    appId: dotenv.env['FIREBASE_ANDROID_APP_ID'] ?? '1:718796753680:android:022165c940dbbebefbf395',
+    messagingSenderId: dotenv.env['FIREBASE_ANDROID_MESSAGING_SENDER_ID'] ?? '718796753680',
+    projectId: dotenv.env['FIREBASE_ANDROID_PROJECT_ID'] ?? 'fruit-app-33df1',
+    storageBucket: dotenv.env['FIREBASE_ANDROID_STORAGE_BUCKET'] ?? 'fruit-app-33df1.firebasestorage.app',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBKJAyjJxFKWdcgSfoPEcy-Caaa65dKUBg',
-    appId: '1:718796753680:ios:4b35ecb59deb3945fbf395',
-    messagingSenderId: '718796753680',
-    projectId: 'fruit-app-33df1',
-    storageBucket: 'fruit-app-33df1.firebasestorage.app',
-    iosBundleId: 'com.example.fruithub',
+  static FirebaseOptions get ios => FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_IOS_API_KEY'] ?? 'AIzaSyBKJAyjJxFKWdcgSfoPEcy-Caaa65dKUBg',
+    appId: dotenv.env['FIREBASE_IOS_APP_ID'] ?? '1:718796753680:ios:4b35ecb59deb3945fbf395',
+    messagingSenderId: dotenv.env['FIREBASE_IOS_MESSAGING_SENDER_ID'] ?? '718796753680',
+    projectId: dotenv.env['FIREBASE_IOS_PROJECT_ID'] ?? 'fruit-app-33df1',
+    storageBucket: dotenv.env['FIREBASE_IOS_STORAGE_BUCKET'] ?? 'fruit-app-33df1.firebasestorage.app',
+    iosBundleId: dotenv.env['FIREBASE_IOS_BUNDLE_ID'] ?? 'com.example.fruithub',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBKJAyjJxFKWdcgSfoPEcy-Caaa65dKUBg',
-    appId: '1:718796753680:ios:4b35ecb59deb3945fbf395',
-    messagingSenderId: '718796753680',
-    projectId: 'fruit-app-33df1',
-    storageBucket: 'fruit-app-33df1.firebasestorage.app',
-    iosBundleId: 'com.example.fruithub',
+  static FirebaseOptions get macos => FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_IOS_API_KEY'] ?? 'AIzaSyBKJAyjJxFKWdcgSfoPEcy-Caaa65dKUBg',
+    appId: dotenv.env['FIREBASE_IOS_APP_ID'] ?? '1:718796753680:ios:4b35ecb59deb3945fbf395',
+    messagingSenderId: dotenv.env['FIREBASE_IOS_MESSAGING_SENDER_ID'] ?? '718796753680',
+    projectId: dotenv.env['FIREBASE_IOS_PROJECT_ID'] ?? 'fruit-app-33df1',
+    storageBucket: dotenv.env['FIREBASE_IOS_STORAGE_BUCKET'] ?? 'fruit-app-33df1.firebasestorage.app',
+    iosBundleId: dotenv.env['FIREBASE_IOS_BUNDLE_ID'] ?? 'com.example.fruithub',
   );
 
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCKLliFDFNtWv8XxbxkIIFaT2z4J2V1v0c',
-    appId: '1:718796753680:web:187efc4ef801b05afbf395',
-    messagingSenderId: '718796753680',
-    projectId: 'fruit-app-33df1',
-    authDomain: 'fruit-app-33df1.firebaseapp.com',
-    storageBucket: 'fruit-app-33df1.firebasestorage.app',
+  static FirebaseOptions get windows => FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_WINDOWS_API_KEY'] ?? 'AIzaSyCKLliFDFNtWv8XxbxkIIFaT2z4J2V1v0c',
+    appId: dotenv.env['FIREBASE_WINDOWS_APP_ID'] ?? '1:718796753680:web:187efc4ef801b05afbf395',
+    messagingSenderId: dotenv.env['FIREBASE_WINDOWS_MESSAGING_SENDER_ID'] ?? '718796753680',
+    projectId: dotenv.env['FIREBASE_WINDOWS_PROJECT_ID'] ?? 'fruit-app-33df1',
+    authDomain: dotenv.env['FIREBASE_WINDOWS_AUTH_DOMAIN'] ?? 'fruit-app-33df1.firebaseapp.com',
+    storageBucket: dotenv.env['FIREBASE_WINDOWS_STORAGE_BUCKET'] ?? 'fruit-app-33df1.firebasestorage.app',
   );
 }
