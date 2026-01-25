@@ -5,6 +5,7 @@ import 'package:fruithub/core/constants/constants.dart';
 import 'package:fruithub/core/utils/App_colors.dart';
 import 'package:fruithub/core/utils/app_images.dart';
 import 'package:fruithub/core/utils/app_text_styles.dart';
+import 'package:fruithub/features/Auth/presentaion/view/Sign_up_view.dart';
 import 'package:fruithub/features/Auth/presentaion/view/widget/dont_have_account_widget.dart';
 import 'package:fruithub/features/Auth/presentaion/view/widget/ro_divider.dart';
 import 'package:fruithub/features/Auth/presentaion/view/widget/social_login_button.dart';
@@ -53,7 +54,7 @@ class LoginViewBody extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 // Navigate to sign up view
-                Navigator.pushNamed(context, 'signUp');
+                Navigator.of(context).pushNamed(SignUpView.routeName);
               },
               child: const dontHaveAccountWidget(),
             ),

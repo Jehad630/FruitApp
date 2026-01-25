@@ -6,14 +6,14 @@ import 'package:fruithub/features/Auth/presentaion/view/login_view.dart';
 import 'package:fruithub/features/On_Boarding/presentaion/view/on_boarding_view.dart';
 import 'package:svg_flutter/svg.dart';
 
-class SplashViewVody extends StatefulWidget {
-  const SplashViewVody({super.key});
+class SplashViewBody extends StatefulWidget {
+  const SplashViewBody({super.key});
 
   @override
-  State<SplashViewVody> createState() => _SplashViewVodyState();
+  State<SplashViewBody> createState() => _SplashViewBodyState();
 }
 
-class _SplashViewVodyState extends State<SplashViewVody> {
+class _SplashViewBodyState extends State<SplashViewBody> {
   void initState() {
     excuteNavigation();
     super.initState();
