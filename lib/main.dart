@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruithub/core/Funcetion/on_generate_route.dart';
+import 'package:fruithub/core/services/get_it_service.dart';
 import 'package:fruithub/core/services/shared_prefrences_singleton.dart';
 import 'package:fruithub/core/utils/App_colors.dart';
 import 'package:fruithub/features/Splash/presentaion/view/splash_view.dart';
@@ -14,7 +15,7 @@ Future<void> main() async {
 
   await dotenv.load(fileName: ".env");
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
+  setupGetIt();
   await Prefs.init();
   runApp(const FruitApp());
 }

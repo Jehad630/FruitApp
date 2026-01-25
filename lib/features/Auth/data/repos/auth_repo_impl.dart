@@ -24,7 +24,7 @@ class AuthRepoImpl extends AuthRepo {
     } on customeException catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
-      return Left(ServerFailure("An unknown error occurred."));
+      return Left(ServerFailure(" هناك خطاء: ${e.toString()}"));
     }
   }
 }

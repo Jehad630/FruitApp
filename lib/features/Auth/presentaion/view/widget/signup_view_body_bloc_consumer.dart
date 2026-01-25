@@ -11,7 +11,17 @@ class signup_view_body_bloc_consumer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) {
-        // TODO: implement listener
+        if (state is SignUpSuccess) {
+          // Navigate to another screen or show success message
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('تم إنشاء الحساب بنجاح!')));
+        } else if (state is SignUpFailure) {
+          // Show error message
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('فشل في إنشاء الحساب: ${state.errorMessage}')),
+          );
+        }
       },
 
       builder: (context, state) {
