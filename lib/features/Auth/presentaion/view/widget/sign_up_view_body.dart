@@ -6,7 +6,7 @@ import 'package:fruithub/features/Auth/presentaion/view/widget/TermsAndCondition
 import 'package:fruithub/features/Auth/presentaion/view/widget/have_an_account_widget.dart';
 
 class SignUpViewBody extends StatefulWidget {
-  SignUpViewBody({super.key});
+  const SignUpViewBody({super.key});
 
   @override
   State<SignUpViewBody> createState() => _SignUpViewBodyState();
@@ -32,17 +32,17 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
           child: Column(
             children: [
               const SizedBox(height: 24),
-              CustomTextFormField(
+              const CustomTextFormField(
                 hintText: "الاسم الكامل",
                 keyboardType: TextInputType.name,
               ),
               const SizedBox(height: 26),
-              CustomTextFormField(
+              const CustomTextFormField(
                 hintText: "البريد الإلكتروني",
                 keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 26),
-              CustomTextFormField(
+              const CustomTextFormField(
                 hintText: "كلمة المرور",
                 keyboardType: TextInputType.visiblePassword,
                 suffixIcon: const Icon(
@@ -60,7 +60,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               const SizedBox(height: 30),
               CustomButton(onPressed: () {}, text: "إنشاء حساب جديد"),
               const SizedBox(height: 26),
-              HaveAnAccountWidget(),
+              const HaveAnAccountWidget(),
             ],
           ),
         ),

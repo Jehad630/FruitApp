@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruithub/core/Funcetion/on_generate_route.dart';
 import 'package:fruithub/core/services/shared_prefrences_singleton.dart';
@@ -6,8 +7,11 @@ import 'package:fruithub/core/utils/App_colors.dart';
 import 'package:fruithub/features/Splash/presentaion/view/splash_view.dart';
 import 'package:fruithub/generated/l10n.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: ".env");
+
   await Prefs.init();
   runApp(const FruitApp());
 }
