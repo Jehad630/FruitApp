@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruithub/core/Funcetion/build_error_bar.dart';
 import 'package:fruithub/core/Widgets/Custom_button.dart';
 import 'package:fruithub/core/Widgets/custom_text_form_field.dart';
 import 'package:fruithub/core/constants/constants.dart';
@@ -67,11 +68,20 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
-                    context.read<SignUpCubit>().createUserWithEmailAndPassword(
-                      email,
-                      password,
-                      name,
-                    );
+                    if (isTermsAccepted) {
+                      context
+                          .read<SignUpCubit>()
+                          .createUserWithEmailAndPassword(
+                            email,
+                            password,
+                            name,
+                          );
+                    } else {
+                      buildErrorBar(
+                        context,
+                        "يجب قبول الشروط والأحكام للمتابعة.",
+                      );
+                    }
                   } else {
                     autovalidateMode = AutovalidateMode.always;
                     setState(() {});

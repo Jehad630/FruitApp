@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:fruithub/core/errors/Excpetion.dart';
 import 'package:fruithub/core/errors/faliures.dart';
@@ -24,6 +26,9 @@ class AuthRepoImpl extends AuthRepo {
     } on customeException catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
+      log(
+        "excrption in firebase auth service createUserWithEmailAndPassword : ${e.toString()}",
+      );
       return Left(ServerFailure(" هناك خطاء: ${e.toString()}"));
     }
   }
