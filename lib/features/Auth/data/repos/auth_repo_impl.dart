@@ -32,4 +32,25 @@ class AuthRepoImpl extends AuthRepo {
       return Left(ServerFailure(" هناك خطاء: ${e.toString()}"));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      var user = await firebaseAuthService.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return Right(UserModel.fromfirebaseUser(user as dynamic));
+    } on customeException catch (e) {
+      return Left(ServerFailure(e.message));
+    } catch (e) {
+      log(
+        "excrption in firebase auth service signInWithEmailAndPassword : ${e.toString()}",
+      );
+      return Left(ServerFailure(" هناك خطاء: ${e.toString()}"));
+    }
+  }
 }
