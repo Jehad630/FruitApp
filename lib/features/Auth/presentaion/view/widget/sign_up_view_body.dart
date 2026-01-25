@@ -6,6 +6,7 @@ import 'package:fruithub/core/constants/constants.dart';
 import 'package:fruithub/features/Auth/presentaion/cubits/sign_up_cubits/sign_up_cubit.dart';
 import 'package:fruithub/features/Auth/presentaion/view/widget/TermsAndConditionsWidget.dart';
 import 'package:fruithub/features/Auth/presentaion/view/widget/have_an_account_widget.dart';
+import 'package:fruithub/core/Widgets/password_filed.dart';
 
 class SignUpViewBody extends StatefulWidget {
   const SignUpViewBody({super.key});
@@ -49,16 +50,10 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 26),
-              CustomTextFormField(
+              PasswordFiled(
                 onSaved: (value) {
                   password = value!;
                 },
-                hintText: "كلمة المرور",
-                keyboardType: TextInputType.visiblePassword,
-                suffixIcon: const Icon(
-                  Icons.visibility_off,
-                  color: Color(0xffc9cecf),
-                ),
               ),
               const SizedBox(height: 16),
 
