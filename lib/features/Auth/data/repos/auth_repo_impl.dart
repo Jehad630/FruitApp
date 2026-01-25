@@ -1,0 +1,19 @@
+import 'package:dartz/dartz.dart';
+import 'package:fruithub/core/errors/faliures.dart';
+import 'package:fruithub/core/services/Firebase_auth_service.dart';
+import 'package:fruithub/features/Auth/domain/entites/user_entity.dart';
+import 'package:fruithub/features/Auth/domain/repos/auth_repo.dart';
+
+class AuthRepoImpl extends AuthRepo {
+  final FirebaseAuthService firebaseAuthService;
+  AuthRepoImpl({required this.firebaseAuthService});
+  @override
+  Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
+    String email,
+    String password,
+    String name,
+  ) {
+    // TODO: implement createUserWithEmailAndPassword
+    throw UnimplementedError();
+  }
+}
