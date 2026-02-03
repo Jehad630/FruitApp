@@ -53,4 +53,34 @@ class AuthRepoImpl extends AuthRepo {
       return Left(ServerFailure(" هناك خطاء: ${e.toString()}"));
     }
   }
+  /*
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await firebaseAuthService.signInWithGoogle();
+      return Right(UserModel.fromfirebaseUser(user as dynamic));
+    } on customeException catch (e) {
+      return Left(ServerFailure(e.message));
+    } catch (e) {
+      log(
+        "excrption in firebase auth service signInWithGoogle : ${e.toString()}",
+      );
+      return Left(ServerFailure(" هناك خطاء: ${e.toString()}"));
+    }
+  }*/
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    try {
+      var user = await firebaseAuthService.signInWithFacebook();
+      return Right(UserModel.fromfirebaseUser(user as dynamic));
+    } on customeException catch (e) {
+      return Left(ServerFailure(e.message));
+    } catch (e) {
+      log(
+        "excrption in firebase auth service signInWithFacebook : ${e.toString()}",
+      );
+      return Left(ServerFailure(" هناك خطاء: ${e.toString()}"));
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fruithub/core/errors/Excpetion.dart';
 
 class FirebaseAuthService {
@@ -72,5 +72,51 @@ class FirebaseAuthService {
       );
       throw customeException(message: " هناك خطاء: ${e.toString()}");
     }
+  }
+  /*
+  Future<User> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      // If the user cancels the sign-in dialog
+      if (googleUser == null) {
+        throw customeException(message: "تم إلغاء تسجيل الدخول.");
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      final userCredential = await _auth.signInWithCredential(credential);
+      return userCredential.user!;
+    } on FirebaseAuthException catch (e) {
+      log(
+        "excrption in firebase auth service signInWithGoogle : ${e.toString()}",
+      );
+      throw customeException(message: "هناك خطاء: ${e.message}");
+    } catch (e) {
+      log(
+        "excrption in firebase auth service signInWithGoogle : ${e.toString()}",
+      );
+      throw customeException(message: " هناك خطاء: ${e.toString()}");
+    }
+  }*/
+
+  Future<User> signInWithFacebook() async {
+    // Trigger the sign-in flow
+    final LoginResult loginResult = await FacebookAuth.instance.login();
+
+    // Create a credential from the access token
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+
+    // Once signed in, return the UserCredential
+    return (await FirebaseAuth.instance.signInWithCredential(
+      facebookAuthCredential,
+    )).user!;
   }
 }
