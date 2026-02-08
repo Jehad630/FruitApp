@@ -3,14 +3,20 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:fruithub/core/errors/Excpetion.dart';
 import 'package:fruithub/core/errors/faliures.dart';
+import 'package:fruithub/core/services/Database_Service.dart';
 import 'package:fruithub/core/services/Firebase_auth_service.dart';
+import 'package:fruithub/core/utils/backend_endpoints.dart';
 import 'package:fruithub/features/Auth/data/models/user_model.dart';
 import 'package:fruithub/features/Auth/domain/entites/user_entity.dart';
 import 'package:fruithub/features/Auth/domain/repos/auth_repo.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;
-  AuthRepoImpl({required this.firebaseAuthService});
+  final DatabaseService databaseService;
+  AuthRepoImpl({
+    required this.firebaseAuthService,
+    required this.databaseService,
+  });
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
     String email,
@@ -22,7 +28,9 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      return Right(UserModel.fromfirebaseUser(user));
+      var userEntity = UserModel.fromfirebaseUser(user);
+      await addUserData(user: userEntity);
+      return Right(userEntity);
     } on customeException catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
@@ -53,21 +61,6 @@ class AuthRepoImpl extends AuthRepo {
       return Left(ServerFailure(" هناك خطاء: ${e.toString()}"));
     }
   }
-  /*
-  @override
-  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
-    try {
-      var user = await firebaseAuthService.signInWithGoogle();
-      return Right(UserModel.fromfirebaseUser(user as dynamic));
-    } on customeException catch (e) {
-      return Left(ServerFailure(e.message));
-    } catch (e) {
-      log(
-        "excrption in firebase auth service signInWithGoogle : ${e.toString()}",
-      );
-      return Left(ServerFailure(" هناك خطاء: ${e.toString()}"));
-    }
-  }*/
 
   @override
   Future<Either<Failure, UserEntity>> signInWithFacebook() async {
@@ -83,4 +76,30 @@ class AuthRepoImpl extends AuthRepo {
       return Left(ServerFailure(" هناك خطاء: ${e.toString()}"));
     }
   }
+
+  @override
+  Future<dynamic> addUserData({required UserEntity user}) async {
+    {
+      await databaseService.addData(
+        path: BackendEndpoints.addUserData,
+        data: user.toMap(),
+      );
+    }
+  }
+
+  /*
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await firebaseAuthService.signInWithGoogle();
+      return Right(UserModel.fromfirebaseUser(user as dynamic));
+    } on customeException catch (e) {
+      return Left(ServerFailure(e.message));
+    } catch (e) {
+      log(
+        "excrption in firebase auth service signInWithGoogle : ${e.toString()}",
+      );
+      return Left(ServerFailure(" هناك خطاء: ${e.toString()}"));
+    }
+  }*/
 }
