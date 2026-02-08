@@ -6,6 +6,8 @@ import 'package:fruithub/core/errors/Excpetion.dart';
 class FirebaseAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  Future deleteUser() async => await _auth.currentUser!.delete();
+
   Future<User> createUserWithEmailAndPassword({
     required String email,
     required String password,
