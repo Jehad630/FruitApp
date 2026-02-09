@@ -56,7 +56,8 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      return Right(UserModel.fromfirebaseUser(user as dynamic));
+      var userEntity = await getUserdata(uId: user.uid);
+      return Right(userEntity);
     } on customeException catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
@@ -83,13 +84,23 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<dynamic> addUserData({required UserEntity user}) async {
+  Future addUserData({required UserEntity user}) async {
     {
       await databaseService.addData(
         path: BackendEndpoints.addUserData,
         data: user.toMap(),
+        documentId: user.uId,
       );
     }
+  }
+
+  @override
+  Future<UserEntity> getUserdata({required String uId}) async {
+    var userData = await databaseService.getData(
+      path: BackendEndpoints.addUserData,
+      documentId: uId,
+    );
+    return UserModel.fromJson(userData);
   }
 
   /*
