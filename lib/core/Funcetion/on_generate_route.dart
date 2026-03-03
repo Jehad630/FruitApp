@@ -3,6 +3,7 @@ import 'package:fruithub/features/Auth/presentaion/view/Sign_up_view.dart';
 import 'package:fruithub/features/Auth/presentaion/view/login_view.dart';
 import 'package:fruithub/features/On_Boarding/presentaion/view/on_boarding_view.dart';
 import 'package:fruithub/features/Splash/presentaion/view/splash_view.dart';
+import 'package:fruithub/features/home/presentation/views/home_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -12,6 +13,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const LoginView());
     case SignUpView.routeName:
       return MaterialPageRoute(builder: (context) => const SignUpView());
+    case HomeView.routeName:
+      return MaterialPageRoute(builder: (context) => const HomeView());
     case OnBoardingView.routeName:
       return MaterialPageRoute(builder: (context) => const OnBoardingView());
 

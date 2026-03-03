@@ -16,6 +16,7 @@ class signup_view_body_bloc_consumer extends StatelessWidget {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text('تم إنشاء الحساب بنجاح!')));
+          Navigator.pop(context);
         } else if (state is SignUpFailure) {
           // Show error message
           buildErrorBar(context, state.errorMessage);
