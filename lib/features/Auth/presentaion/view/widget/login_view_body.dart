@@ -11,6 +11,7 @@ import 'package:fruithub/features/Auth/presentaion/cubits/sign_in_cubit/sign_in_
 import 'package:fruithub/features/Auth/presentaion/view/widget/dont_have_account_widget.dart';
 import 'package:fruithub/features/Auth/presentaion/view/widget/ro_divider.dart';
 import 'package:fruithub/features/Auth/presentaion/view/widget/social_login_button.dart';
+import 'package:fruithub/features/home/presentation/views/home_view.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -76,6 +77,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   }
                 },
                 text: "تسجيل الدخول",
+              ),
+              CustomButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, HomeView.routeName);
+                },
+                text: "تسجيل سريع",
               ),
               const SizedBox(height: 42),
 

@@ -8,6 +8,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const homeview_body();
+    return Scaffold(body: SafeArea(child: const homeview_body()));
   }
 }
