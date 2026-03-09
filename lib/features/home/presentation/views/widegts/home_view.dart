@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruithub/features/home/presentation/views/widegts/custom_home_appbar.dart';
+import 'package:fruithub/features/home/presentation/views/widegts/featured_item.dart';
 import 'package:fruithub/features/home/presentation/views/widegts/serach_text_filed.dart';
 
 class homeview_body extends StatelessWidget {
@@ -14,9 +15,11 @@ class homeview_body extends StatelessWidget {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                SizedBox(height: 16),
-                Custom_home_appbar(),
-                SerachTextFiled(),
+                const SizedBox(height: 16),
+                const Custom_home_appbar(),
+                const SerachTextFiled(),
+                const SizedBox(height: 12),
+                const FeaturedItem(),
               ],
             ),
           ),
